@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Carousel } from 'react-bootstrap';
+import { Carousel, Card, Button } from 'react-bootstrap';
 
 
 class BestBooks extends React.Component {
@@ -14,7 +14,7 @@ class BestBooks extends React.Component {
 
   /* TODO: Make a GET request to your API to fetch books for the logged in user  */
   componentDidMount = () => {
-    axios.get(`${process.env.HEROKU_URL}/books`).then(res => {
+    axios.get(`https://can-of-books-hassan.herokuapp.com/books`).then(res => {
       this.setState({
         books: res.data,
       });
@@ -34,19 +34,22 @@ class BestBooks extends React.Component {
           {
             this.state.books.map((elem, index) => {
 
-              return <Carousel.Item key={index}>
-                <Carousel.Caption className="color">
-                  <h3 >Book Title :{elem.title}</h3>
-                  <h4 >Description :{elem.description}</h4>
-                  <h4 >Status :{elem.status}</h4>
-                  <h4 >email :{elem.email}</h4>
-                </Carousel.Caption>
-              </Carousel.Item>
+              return <Card key={index} style={{ width: '18rem' }}>
+                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Body>
+                  <Card.Title>Title :{elem.title}</Card.Title>
+                  <Card.Text>Description :{elem.description}</Card.Text>
+                  <Card.Text>Status :{elem.status}</Card.Text>
+                  <Card.Text>email :{elem.email}</Card.Text>
+                  <Button variant="primary">Go somewhere</Button>
+                </Card.Body>
+              </Card>
             })
           }
         </Carousel>)
           : (<h4>No Books Found</h4>)
         }
+
       </>
     )
   }
