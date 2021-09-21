@@ -6,7 +6,8 @@ class BestBooks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: []
+      books: [],
+      email: 'hassanhamdandev@gmail.com'
     }
   }
 
@@ -25,16 +26,12 @@ class BestBooks extends React.Component {
     return (
       <>
         <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
-
-        {this.state.books.length ? (<Carousel >
+        <br />
+        <br />
+        {this.state.books.length > 0 ? (<Carousel >
           {
-            this.state.books.map((elem) => {
-              return <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src="holder.js/800x400?text=First slide&bg=373940"
-                  alt="First slide"
-                />
+            this.state.books.map((elem, index) => {
+              return <Carousel.Item key={index}>
                 <Carousel.Caption className="color">
                   <h3 >Book Title :{elem.title}</h3>
                   <h4 >Description :{elem.description}</h4>

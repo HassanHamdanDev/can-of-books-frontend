@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
+import BestBooks from './Components/BestBooks';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router,
@@ -32,6 +33,7 @@ class App extends React.Component {
   render() {
     return (
       <>
+        
         <Router>
           <Header user={this.state.user} onLogout={this.logoutHandler} />
           <Switch>
@@ -42,6 +44,7 @@ class App extends React.Component {
           </Switch>
           <Footer />
         </Router>
+        <BestBooks />
       </>
     )
   }
